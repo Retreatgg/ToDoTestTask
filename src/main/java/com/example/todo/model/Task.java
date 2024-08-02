@@ -1,5 +1,7 @@
 package com.example.todo.model;
 
+import com.example.todo.enums.Priority;
+import com.example.todo.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -41,12 +43,12 @@ public class Task {
     @Size(max = 35)
     @NotNull
     @Column(name = "status", nullable = false, length = 35)
-    private String status;
+    private Status status;
 
     @Size(max = 35)
     @NotNull
     @Column(name = "priority", nullable = false, length = 35)
-    private String priority;
+    private Priority priority;
 
     @NotNull
     @Column(name = "created_date", nullable = false)
