@@ -10,8 +10,8 @@ import lombok.Data;
 public class TaskDto {
 
     private Long id;
-    private String author;
-    private String performer;
+    private Long authorId;
+    private Long performerId;
     private String nameTask;
     private String description;
     private Status status;

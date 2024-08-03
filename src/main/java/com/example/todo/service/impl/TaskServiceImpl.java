@@ -48,6 +48,11 @@ public class TaskServiceImpl implements TaskService {
         log.info("user {} updated task {}", 1, 2);
     }
 
+    @Override
+    public Task findById(Long id) {
+        return taskRepository.findById(id).orElseThrow();
+    }
+
     private Task createModel(TaskCreateDto dto) {
         return Task.builder()
                 .nameTask(dto.getNameTask())

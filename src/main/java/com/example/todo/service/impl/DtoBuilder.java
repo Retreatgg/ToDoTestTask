@@ -1,7 +1,9 @@
 package com.example.todo.service.impl;
 
+import com.example.todo.dto.CommentDto;
 import com.example.todo.dto.TaskDto;
 import com.example.todo.dto.UserDto;
+import com.example.todo.model.Comment;
 import com.example.todo.model.Task;
 import com.example.todo.model.User;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,8 @@ public class DtoBuilder {
                 .id(model.getId())
                 .description(model.getDescription())
                 .nameTask(model.getDescription())
-                .author(userDto(model.getAuthor()))
-                .performer(userDto(model.getPerformer()))
+                .authorId(model.getAuthor().getId())
+                .performerId(model.getAuthor().getId())
                 .status(model.getStatus())
                 .priority(model.getPriority())
                 .build();
@@ -23,5 +25,15 @@ public class DtoBuilder {
 
     public UserDto userDto(User model) {
         return UserDto.builder().build();
+    }
+
+    public CommentDto commentDto(Comment model) {
+        return CommentDto.builder()
+                .authorId(model.getAuthor().getId())
+                .createdDate(model.getCreatedDate())
+                .taskId(model.getTask().getId())
+                .description(model.getDescription())
+                .id(model.getId())
+                .build();
     }
 }
