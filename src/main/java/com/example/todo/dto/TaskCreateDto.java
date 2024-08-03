@@ -7,11 +7,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class TaskDto {
+public class TaskCreateDto {
 
-    private Long id;
-    private String author;
-    private String performer;
+    private Long performerId;
     private String nameTask;
     private String description;
     private Status status;

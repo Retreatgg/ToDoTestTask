@@ -1,6 +1,8 @@
 package com.example.todo.service;
 
+import com.example.todo.dto.TaskCreateDto;
 import com.example.todo.dto.TaskDto;
+import com.example.todo.dto.TaskEditDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,4 +11,8 @@ import java.util.List;
 public interface TaskService {
 
     List<TaskDto> getTasksByAuthorId(Long authorId);
+
+    void create(TaskCreateDto createDto);
+
+    void edit(TaskEditDto editDto);
 }
