@@ -1,6 +1,6 @@
 package com.example.todo.specifications;
 
-import com.example.todo.model.Task;
+import com.example.todo.models.Task;
 import org.springframework.data.jpa.domain.Specification;
 
 public class TaskSpecification {
