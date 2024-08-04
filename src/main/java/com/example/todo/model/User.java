@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -48,5 +49,8 @@ public class User  {
 
     @OneToMany(mappedBy = "performer")
     private Set<Task> tasks = new LinkedHashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Authority> authorities;
 
 }
