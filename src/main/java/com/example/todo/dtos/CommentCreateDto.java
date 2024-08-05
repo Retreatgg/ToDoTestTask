@@ -1,5 +1,7 @@
 package com.example.todo.dtos;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,7 +9,8 @@ import lombok.Data;
 @Builder
 public class CommentCreateDto {
 
-    private Long authorId;
+    @NotEmpty
     private String description;
+    @NotNull
     private Long taskId;
 }

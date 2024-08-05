@@ -9,10 +9,10 @@ import lombok.Data;
 @Builder
 public class TaskEditDto {
 
-    private Long id;
     private Long performerId;
     private String nameTask;
     private String description;
     private Status status;
     private Priority priority;
+
 }

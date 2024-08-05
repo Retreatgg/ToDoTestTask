@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface CommentService {
-    void create(CommentCreateDto createDto);
+    void create(CommentCreateDto createDto, Long taskId);
 
     List<CommentDto> getCommentsByTaskId(Long taskId);
 }

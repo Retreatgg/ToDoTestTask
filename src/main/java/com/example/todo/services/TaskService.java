@@ -14,8 +14,8 @@ public interface TaskService {
 
     List<TaskDto> getTasksByAuthorId(Long authorId);
 
-    void create(TaskCreateDto createDto) throws AuthenticationException;
+    void create(TaskCreateDto createDto);
 
-    void edit(TaskEditDto editDto);
+    void edit(TaskEditDto editDto, Long taskId);
     Task findById(Long id);
 }

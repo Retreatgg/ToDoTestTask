@@ -7,6 +7,7 @@ import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.models.User;
 import com.example.todo.services.TaskService;
 import com.example.todo.utils.AuthUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,20 +25,20 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("")
-    public ResponseEntity<List<TaskDto>> getTasks() throws AuthenticationException {
+    public ResponseEntity<List<TaskDto>> getTasks() {
         User user = AuthUtils.getUserByAuth();
         return ResponseEntity.ok(taskService.getTasksByAuthorId(user.getId()));
     }
 
     @PostMapping("")
-    public HttpStatus create(@RequestBody TaskCreateDto createDto) throws AuthenticationException{
+    public HttpStatus create(@RequestBody @Valid TaskCreateDto createDto){
         taskService.create(createDto);
         return HttpStatus.OK;
     }
 
-    @PutMapping
-    public HttpStatus edit(@RequestBody TaskEditDto editDto) {
-        taskService.edit(editDto);
+    @PutMapping("{id}")
+    public HttpStatus edit(@PathVariable Long id, @RequestBody @Valid TaskEditDto editDto) {
+        taskService.edit(editDto, id);
         return HttpStatus.OK;
     }
 }

@@ -38,7 +38,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void create(TaskCreateDto createDto) throws AuthenticationException {
+    public void create(TaskCreateDto createDto) {
         User author = AuthUtils.getUserByAuth();
         Task task = createModel(createDto, author);
         taskRepository.save(task);
@@ -46,8 +46,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void edit(TaskEditDto editDto) {
-        Task task = updateModel(editDto);
+    public void edit(TaskEditDto editDto, Long taskId) {
+        Task task = updateModel(editDto, taskId);
         taskRepository.save(task);
         log.info("user {} updated task {}", 1, 2);
     }
@@ -70,9 +70,9 @@ public class TaskServiceImpl implements TaskService {
                 .build();
     }
 
-    private Task updateModel(TaskEditDto dto) {
+    private Task updateModel(TaskEditDto dto, Long taskId) {
         return Task.builder()
-                .id(dto.getId())
+                .id(taskId)
                 .nameTask(dto.getNameTask())
                 .status(dto.getStatus())
                 .priority(dto.getPriority())

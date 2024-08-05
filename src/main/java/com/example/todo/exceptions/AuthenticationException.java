@@ -1,7 +1,7 @@
 package com.example.todo.exceptions;
 
 
-public class AuthenticationException extends Exception {
+public class AuthenticationException extends IllegalArgumentException {
 
     public AuthenticationException() {}
 

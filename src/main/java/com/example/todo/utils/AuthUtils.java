@@ -1,6 +1,5 @@
 package com.example.todo.utils;
 
-import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.models.User;
 import com.example.todo.services.UserService;
 import org.springframework.security.core.Authentication;
@@ -13,9 +12,8 @@ public class AuthUtils {
 
     private static UserService userService;
 
-    public static User getUserByAuth() throws AuthenticationException {
+    public static User getUserByAuth() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null) throw new AuthenticationException("Контекст пустой");
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String email = userDetails.getUsername();
         return userService.findByEmail(email);
