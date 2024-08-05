@@ -25,7 +25,6 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
-    private final DtoBuilder dtoBuilder;
     private final UserService userService;
 
     @Override
@@ -33,7 +32,7 @@ public class TaskServiceImpl implements TaskService {
         Specification<Task> spec = TaskSpecification.hasAuthor(authorId);
         List<Task> tasks = taskRepository.findAll(spec);
         return tasks.stream()
-                .map(dtoBuilder::taskDto)
+                .map(TaskServiceImpl::taskDto)
                 .toList();
     }
 
@@ -42,19 +41,21 @@ public class TaskServiceImpl implements TaskService {
         User author = AuthUtils.getUserByAuth();
         Task task = createModel(createDto, author);
         taskRepository.save(task);
-        log.info("user {} create new task", 1);
+        log.info("User {} create new task", author.getId());
     }
 
     @Override
     public void edit(TaskEditDto editDto, Long taskId) {
+        User author = AuthUtils.getUserByAuth();
         Task task = updateModel(editDto, taskId);
         taskRepository.save(task);
-        log.info("user {} updated task {}", 1, 2);
+        log.info("user {} updated task {}", author.getId(), task.getId());
     }
 
     @Override
     public Task findById(Long id) {
-        return taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException("Task with ID: "+id+" not found"));
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task with ID: "+id+" not found"));
     }
 
     @Override
@@ -62,6 +63,7 @@ public class TaskServiceImpl implements TaskService {
         Task task = findById(id);
         task.setPerformer(userService.findById(taskChangePerformerDto.getPerformerId()));
         taskRepository.save(task);
+        log.info("Task {} was change performer {}", id, taskChangePerformerDto.getPerformerId());
     }
 
     @Override
@@ -69,6 +71,21 @@ public class TaskServiceImpl implements TaskService {
         Task task = findById(id);
         task.setStatus(Status.valueOf(taskChangeStatusDto.getStatus()));
         taskRepository.save(task);
+        log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
+    }
+
+    @Override
+    public List<TaskDto> getTasksByPerformerId(Long id) {
+        Specification<Task> spec = TaskSpecification.hasPerformer(id);
+        List<Task> tasks = taskRepository.findAll(spec);
+        return tasks.stream()
+                .map(TaskServiceImpl::taskDto)
+                .toList();
+    }
+
+    @Override
+    public void delete(Long id) {
+        taskRepository.deleteById(id);
     }
 
     private Task createModel(TaskCreateDto dto, User author) {
@@ -93,6 +110,18 @@ public class TaskServiceImpl implements TaskService {
                 .updatedDate(Instant.now())
                 .performer(userService.findById(dto.getPerformerId()))
                 .description(dto.getDescription())
+                .build();
+    }
+
+    private static TaskDto taskDto(Task model) {
+        return TaskDto.builder()
+                .id(model.getId())
+                .description(model.getDescription())
+                .nameTask(model.getDescription())
+                .authorId(model.getAuthor().getId())
+                .performerId(model.getAuthor().getId())
+                .status(model.getStatus())
+                .priority(model.getPriority())
                 .build();
     }
 

@@ -20,6 +20,10 @@ public interface TaskService {
     void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto);
 
     void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
+
+    List<TaskDto> getTasksByPerformerId(Long id);
+
+    void delete(Long id);
 }
 
 

@@ -11,4 +11,11 @@ public class TaskSpecification {
             return cb.equal(r.get("author").get("id"), authorId);
         };
     }
+
+    public static Specification<Task> hasPerformer(Long performerId) {
+        return (r, q, cb) -> {
+            if(performerId == null) return cb.conjunction();
+            return cb.equal(r.get("performer").get("id"), performerId);
+        };
+    }
 }

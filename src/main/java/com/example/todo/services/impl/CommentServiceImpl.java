@@ -22,7 +22,6 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final TaskService taskService;
-    private final DtoBuilder dtoBuilder;
 
     @Override
     public void create(CommentCreateDto createDto, Long taskId) {
@@ -36,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
     public List<CommentDto> getCommentsByTaskId(Long taskId) {
         return commentRepository.findByTaskId(taskId)
                 .stream()
-                .map(dtoBuilder::commentDto)
+                .map(CommentServiceImpl::commentDto)
                 .toList();
     }
 
@@ -46,6 +45,16 @@ public class CommentServiceImpl implements CommentService {
                 .description(dto.getDescription())
                 .author(author)
                 .task(taskService.findById(taskId))
+                .build();
+    }
+
+    private static CommentDto commentDto(Comment model) {
+        return CommentDto.builder()
+                .authorId(model.getAuthor().getId())
+                .createdDate(model.getCreatedDate())
+                .taskId(model.getTask().getId())
+                .description(model.getDescription())
+                .id(model.getId())
                 .build();
     }
 }

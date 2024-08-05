@@ -1,9 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dtos.*;
-import com.example.todo.models.User;
 import com.example.todo.services.TaskService;
-import com.example.todo.utils.AuthUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +19,14 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping("")
-    public ResponseEntity<List<TaskDto>> getTasks() {
-        User user = AuthUtils.getUserByAuth();
-        return ResponseEntity.ok(taskService.getTasksByAuthorId(user.getId()));
+    @GetMapping("/author/{id}")
+    public ResponseEntity<List<TaskDto>> getTasksByAuthorId(@PathVariable Long id) {
+        return ResponseEntity.ok(taskService.getTasksByAuthorId(id));
+    }
+
+    @GetMapping("/performer/{id}")
+    public ResponseEntity<List<TaskDto>> getTasksByPerformerId(@PathVariable Long id) {
+        return ResponseEntity.ok(taskService.getTasksByPerformerId(id));
     }
 
     @PostMapping("")
@@ -40,14 +42,22 @@ public class TaskController {
     }
 
     @PatchMapping("{id}")
-    public HttpStatus changePerformer(@PathVariable Long id, @RequestBody @Valid TaskChangePerformerDto taskChangePerformerDto) {
+    public HttpStatus changePerformer(@PathVariable Long id,
+                                      @RequestBody @Valid TaskChangePerformerDto taskChangePerformerDto) {
         taskService.changePerformer(id, taskChangePerformerDto);
         return HttpStatus.OK;
     }
 
     @PatchMapping("{id}")
-    public HttpStatus changeStatus(@PathVariable Long id, @RequestBody @Valid TaskChangeStatusDto taskChangeStatusDto) {
+    public HttpStatus changeStatus(@PathVariable Long id,
+                                   @RequestBody @Valid TaskChangeStatusDto taskChangeStatusDto) {
         taskService.changeStatus(id, taskChangeStatusDto);
+        return HttpStatus.OK;
+    }
+
+    @DeleteMapping("{id}")
+    public HttpStatus delete(@PathVariable Long id) {
+        taskService.delete(id);
         return HttpStatus.OK;
     }
 }

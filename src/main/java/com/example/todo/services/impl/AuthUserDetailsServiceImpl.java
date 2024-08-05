@@ -25,7 +25,7 @@ public class AuthUserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         var user = userRepository.findByEmail(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + username));
         return new User(user.getEmail(), user.getPassword(), getAuthorities(user.getAuthorities()));
     }
 

@@ -1,5 +1,6 @@
 package com.example.todo.services.impl;
 
+import com.example.todo.exceptions.UserNotFoundException;
 import com.example.todo.models.Authority;
 import com.example.todo.repositories.AuthorityRepository;
 import com.example.todo.services.AuthorityService;
@@ -13,6 +14,7 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Override
     public Authority findById(Long id) {
-        return authorityRepository.findById(id).orElseThrow();
+        return authorityRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User by ID: " + id + " not found"));
     }
 }

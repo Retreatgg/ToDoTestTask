@@ -32,6 +32,10 @@ public class SecurityConfig {
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET,"/api/tasks/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/tasks/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/statuses/").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/priorities").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/users/**").authenticated()
                 .anyRequest().permitAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(Customizer.withDefaults())

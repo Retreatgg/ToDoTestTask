@@ -1,6 +1,7 @@
 package com.example.todo.services.impl;
 
 import com.example.todo.dtos.RegisterUserDto;
+import com.example.todo.dtos.UserDto;
 import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.exceptions.UserNotFoundException;
 import com.example.todo.models.User;
@@ -10,6 +11,7 @@ import com.example.todo.repositories.UserRepository;
 import com.example.todo.services.AuthorityService;
 import com.example.todo.services.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -31,13 +34,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("not found"));
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+    }
+
+    @Override
+    public UserDto getById(Long id) {
+        User user = findById(id);
+        return buildDto(user);
     }
 
     @Override
     public void create(RegisterUserDto userDto) {
         if(isRegister(userDto.getEmail())) {
-            throw new AuthenticationException("user is registered");
+            throw new AuthenticationException("User is registered");
         }
         User user = createModel(userDto);
         userRepository.save(user);
@@ -46,6 +56,7 @@ public class UserServiceImpl implements UserService {
                 .authority(authorityService.findById(1L))
                 .build();
         userAuthorityRepository.save(userAuthority);
+        log.info("Was created new user {}", user.getId());
     }
 
     private User createModel(RegisterUserDto userDto) {
@@ -60,5 +71,13 @@ public class UserServiceImpl implements UserService {
     private Boolean isRegister(String email) {
         Optional<User> optional = userRepository.findByEmail(email);
         return optional.isPresent();
+    }
+
+    private UserDto buildDto(User model) {
+        return UserDto.builder()
+                .id(model.getId())
+                .username(model.getUsername())
+                .email(model.getEmail())
+                .build();
     }
 }
