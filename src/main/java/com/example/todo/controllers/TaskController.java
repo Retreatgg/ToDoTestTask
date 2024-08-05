@@ -1,9 +1,6 @@
 package com.example.todo.controllers;
 
-import com.example.todo.dtos.TaskCreateDto;
-import com.example.todo.dtos.TaskDto;
-import com.example.todo.dtos.TaskEditDto;
-import com.example.todo.exceptions.AuthenticationException;
+import com.example.todo.dtos.*;
 import com.example.todo.models.User;
 import com.example.todo.services.TaskService;
 import com.example.todo.utils.AuthUtils;
@@ -39,6 +36,18 @@ public class TaskController {
     @PutMapping("{id}")
     public HttpStatus edit(@PathVariable Long id, @RequestBody @Valid TaskEditDto editDto) {
         taskService.edit(editDto, id);
+        return HttpStatus.OK;
+    }
+
+    @PatchMapping("{id}")
+    public HttpStatus changePerformer(@PathVariable Long id, @RequestBody @Valid TaskChangePerformerDto taskChangePerformerDto) {
+        taskService.changePerformer(id, taskChangePerformerDto);
+        return HttpStatus.OK;
+    }
+
+    @PatchMapping("{id}")
+    public HttpStatus changeStatus(@PathVariable Long id, @RequestBody @Valid TaskChangeStatusDto taskChangeStatusDto) {
+        taskService.changeStatus(id, taskChangeStatusDto);
         return HttpStatus.OK;
     }
 }

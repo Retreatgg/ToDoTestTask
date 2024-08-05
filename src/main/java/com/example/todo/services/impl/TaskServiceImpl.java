@@ -1,9 +1,9 @@
 package com.example.todo.services.impl;
 
-import com.example.todo.dtos.TaskCreateDto;
-import com.example.todo.dtos.TaskDto;
-import com.example.todo.dtos.TaskEditDto;
+import com.example.todo.dtos.*;
+import com.example.todo.enums.Status;
 import com.example.todo.exceptions.AuthenticationException;
+import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.models.Task;
 import com.example.todo.models.User;
 import com.example.todo.repositories.TaskRepository;
@@ -54,7 +54,21 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task findById(Long id) {
-        return taskRepository.findById(id).orElseThrow();
+        return taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException("Task with ID: "+id+" not found"));
+    }
+
+    @Override
+    public void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto) {
+        Task task = findById(id);
+        task.setPerformer(userService.findById(taskChangePerformerDto.getPerformerId()));
+        taskRepository.save(task);
+    }
+
+    @Override
+    public void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto) {
+        Task task = findById(id);
+        task.setStatus(Status.valueOf(taskChangeStatusDto.getStatus()));
+        taskRepository.save(task);
     }
 
     private Task createModel(TaskCreateDto dto, User author) {

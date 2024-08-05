@@ -1,8 +1,6 @@
 package com.example.todo.services;
 
-import com.example.todo.dtos.TaskCreateDto;
-import com.example.todo.dtos.TaskDto;
-import com.example.todo.dtos.TaskEditDto;
+import com.example.todo.dtos.*;
 import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.models.Task;
 import org.springframework.stereotype.Service;
@@ -18,4 +16,10 @@ public interface TaskService {
 
     void edit(TaskEditDto editDto, Long taskId);
     Task findById(Long id);
+
+    void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto);
+
+    void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
 }
+
+

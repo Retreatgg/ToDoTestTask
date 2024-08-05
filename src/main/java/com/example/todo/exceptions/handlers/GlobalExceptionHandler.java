@@ -2,6 +2,7 @@ package com.example.todo.exceptions.handlers;
 
 import com.example.todo.exceptions.AppError;
 import com.example.todo.exceptions.AuthenticationException;
+import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<AppError> handleUserNotFoundEx(UserNotFoundException exception) {
-        return new ResponseEntity<>(new AppError(HttpStatus.BAD_REQUEST.value(), exception.getMessage()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
+                exception.getMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -37,5 +39,11 @@ public class GlobalExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    public ResponseEntity<AppError> handleTaskNotFoundEx(TaskNotFoundException exception) {
+        return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
+                exception.getMessage()), HttpStatus.NOT_FOUND);
     }
 }
