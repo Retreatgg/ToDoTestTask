@@ -1,6 +1,6 @@
 package com.example.todo.services.impl;
 
-import com.example.todo.dtos.RegisterUserDto;
+import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.dtos.UserDto;
 import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.exceptions.UserNotFoundException;
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(RegisterUserDto userDto) {
+    public void create(UserRegisterDto userDto) {
         if(isRegister(userDto.getEmail())) {
             throw new AuthenticationException("User is registered");
         }
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
         log.info("Was created new user {}", user.getId());
     }
 
-    private User createModel(RegisterUserDto userDto) {
+    private User createModel(UserRegisterDto userDto) {
         return User.builder()
                 .enabled(true)
                 .password(passwordEncoder.encode(userDto.getPassword()))

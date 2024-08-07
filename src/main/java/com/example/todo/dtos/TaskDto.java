@@ -5,6 +5,8 @@ import com.example.todo.enums.Status;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class TaskDto {
@@ -14,7 +16,8 @@ public class TaskDto {
     private Long performerId;
     private String nameTask;
     private String description;
-    private Status status;
-    private Priority priority;
+    private String status;
+    private String priority;
+    List<CommentDto> commentDtoList;
 
 }

@@ -2,6 +2,7 @@ package com.example.todo.controllers;
 
 import com.example.todo.dtos.CommentCreateDto;
 import com.example.todo.dtos.CommentDto;
+import com.example.todo.models.Task;
 import com.example.todo.services.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public HttpStatus create(@PathVariable Long taskId,  @RequestBody @Valid CommentCreateDto createDto) {
+    public HttpStatus create(@PathVariable Task taskId, @RequestBody @Valid CommentCreateDto createDto) {
         commentService.create(createDto, taskId);
         return HttpStatus.OK;
     }

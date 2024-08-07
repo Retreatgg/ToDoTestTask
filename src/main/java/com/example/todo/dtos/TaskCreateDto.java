@@ -18,8 +18,8 @@ public class TaskCreateDto {
     @NotEmpty
     private String description;
     @NotNull
-    private Status status;
+    private String status;
     @NotNull
-    private Priority priority;
+    private String priority;
 
 }

@@ -20,17 +20,25 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/author/{id}")
-    public ResponseEntity<List<TaskDto>> getTasksByAuthorId(@PathVariable Long id) {
-        return ResponseEntity.ok(taskService.getTasksByAuthorId(id));
+    public ResponseEntity<List<TaskDto>> getTasksByAuthorId(
+            @PathVariable Long id,
+            @RequestParam(name = "status", defaultValue = "default") String status,
+            @RequestParam(name = "priority", defaultValue = "default") String priority
+    ) {
+        return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, priority));
     }
 
     @GetMapping("/performer/{id}")
-    public ResponseEntity<List<TaskDto>> getTasksByPerformerId(@PathVariable Long id) {
+    public ResponseEntity<List<TaskDto>> getTasksByPerformerId(
+            @PathVariable Long id,
+            @RequestParam(name = "status") String status,
+            @RequestParam(name = "priority") String priority
+    ) {
         return ResponseEntity.ok(taskService.getTasksByPerformerId(id));
     }
 
     @PostMapping("")
-    public HttpStatus create(@RequestBody @Valid TaskCreateDto createDto){
+    public HttpStatus create(@RequestBody @Valid TaskCreateDto createDto) {
         taskService.create(createDto);
         return HttpStatus.OK;
     }
@@ -45,13 +53,6 @@ public class TaskController {
     public HttpStatus changePerformer(@PathVariable Long id,
                                       @RequestBody @Valid TaskChangePerformerDto taskChangePerformerDto) {
         taskService.changePerformer(id, taskChangePerformerDto);
-        return HttpStatus.OK;
-    }
-
-    @PatchMapping("{id}")
-    public HttpStatus changeStatus(@PathVariable Long id,
-                                   @RequestBody @Valid TaskChangeStatusDto taskChangeStatusDto) {
-        taskService.changeStatus(id, taskChangeStatusDto);
         return HttpStatus.OK;
     }
 

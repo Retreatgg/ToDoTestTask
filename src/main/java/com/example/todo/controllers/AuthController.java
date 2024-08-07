@@ -1,7 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dtos.JwtRequest;
-import com.example.todo.dtos.RegisterUserDto;
+import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.services.AuthService;
 import com.example.todo.services.UserService;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public HttpStatus registerUser(@RequestBody @Valid RegisterUserDto userDto) {
+    public HttpStatus registerUser(@RequestBody @Valid UserRegisterDto userDto) {
         userService.create(userDto);
         return HttpStatus.OK;
     }

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface TaskService {
 
-    List<TaskDto> getTasksByAuthorId(Long authorId);
+    List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority);
 
     void create(TaskCreateDto createDto);
 

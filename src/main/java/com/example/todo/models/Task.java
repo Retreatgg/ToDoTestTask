@@ -45,12 +45,12 @@ public class Task {
     @Size(max = 35)
     @NotNull
     @Column(name = "status", nullable = false, length = 35)
-    private Status status;
+    private String status;
 
     @Size(max = 35)
     @NotNull
     @Column(name = "priority", nullable = false, length = 35)
-    private Priority priority;
+    private String priority;
 
     @NotNull
     @Column(name = "created_date", nullable = false)

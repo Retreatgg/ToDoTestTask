@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
-public class RegisterUserDto {
+public class UserRegisterDto {
     @NotEmpty
     private String username;
     @NotEmpty

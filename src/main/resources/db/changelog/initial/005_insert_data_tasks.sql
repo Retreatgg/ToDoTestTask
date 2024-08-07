@@ -1,0 +1,2 @@
+insert into tasks(author_id, performer_id, name_task, description, status, priority, created_date, updated_date)
+values (1, 1, 'Срочная задача', 'Это моя самая срочная задача', 'IN_PROGRESS', 'MIDDLE', current_timestamp, current_timestamp);

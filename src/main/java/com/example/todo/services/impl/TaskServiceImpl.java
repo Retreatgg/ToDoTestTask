@@ -1,12 +1,13 @@
 package com.example.todo.services.impl;
 
 import com.example.todo.dtos.*;
+import com.example.todo.enums.Priority;
 import com.example.todo.enums.Status;
-import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.models.Task;
 import com.example.todo.models.User;
 import com.example.todo.repositories.TaskRepository;
+import com.example.todo.services.CommentService;
 import com.example.todo.services.TaskService;
 import com.example.todo.services.UserService;
 import com.example.todo.specifications.TaskSpecification;
@@ -26,19 +27,23 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
     private final UserService userService;
+    private final CommentService commentService;
+    private final AuthUtils authUtils;
 
     @Override
-    public List<TaskDto> getTasksByAuthorId(Long authorId) {
-        Specification<Task> spec = TaskSpecification.hasAuthor(authorId);
+    public List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority) {
+        Specification<Task> spec = TaskSpecification.hasAuthor(authorId)
+                .and(TaskSpecification.hasStatus(status))
+                .and(TaskSpecification.hasPriority(priority));
         List<Task> tasks = taskRepository.findAll(spec);
         return tasks.stream()
-                .map(TaskServiceImpl::taskDto)
+                .map(task -> taskDto(task, commentService))
                 .toList();
     }
 
     @Override
     public void create(TaskCreateDto createDto) {
-        User author = AuthUtils.getUserByAuth();
+        User author = authUtils.getUserByAuth();
         Task task = createModel(createDto, author);
         taskRepository.save(task);
         log.info("User {} create new task", author.getId());
@@ -46,7 +51,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void edit(TaskEditDto editDto, Long taskId) {
-        User author = AuthUtils.getUserByAuth();
+        User author = authUtils.getUserByAuth();
         Task task = updateModel(editDto, taskId);
         taskRepository.save(task);
         log.info("user {} updated task {}", author.getId(), task.getId());
@@ -69,7 +74,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto) {
         Task task = findById(id);
-        task.setStatus(Status.valueOf(taskChangeStatusDto.getStatus()));
+        task.setStatus(taskChangeStatusDto.getStatus());
         taskRepository.save(task);
         log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
     }
@@ -79,7 +84,7 @@ public class TaskServiceImpl implements TaskService {
         Specification<Task> spec = TaskSpecification.hasPerformer(id);
         List<Task> tasks = taskRepository.findAll(spec);
         return tasks.stream()
-                .map(TaskServiceImpl::taskDto)
+                .map(task -> taskDto(task, commentService))
                 .toList();
     }
 
@@ -113,15 +118,17 @@ public class TaskServiceImpl implements TaskService {
                 .build();
     }
 
-    private static TaskDto taskDto(Task model) {
+    private static TaskDto taskDto(Task model, CommentService comService) {
+        List<CommentDto> comments = comService.getCommentsByTaskId(model.getId());
         return TaskDto.builder()
                 .id(model.getId())
                 .description(model.getDescription())
-                .nameTask(model.getDescription())
+                .nameTask(model.getNameTask())
                 .authorId(model.getAuthor().getId())
                 .performerId(model.getAuthor().getId())
                 .status(model.getStatus())
                 .priority(model.getPriority())
+                .commentDtoList(comments)
                 .build();
     }
 
