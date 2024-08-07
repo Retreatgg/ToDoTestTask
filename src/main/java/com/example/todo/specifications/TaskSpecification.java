@@ -36,4 +36,11 @@ public class TaskSpecification {
             return cb.equal(r.get("priority"), priority);
         };
     }
+
+    public static Specification<Task> hasActive(Boolean bool) {
+        return (r, q, cb) -> {
+            if(bool == null) return cb.conjunction();
+            return cb.equal(r.get("isActive"), bool);
+        };
+    }
 }

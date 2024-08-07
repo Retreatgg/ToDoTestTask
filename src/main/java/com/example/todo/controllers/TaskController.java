@@ -1,6 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dtos.*;
+import com.example.todo.models.Task;
 import com.example.todo.services.TaskService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class TaskController {
             @RequestParam(name = "status") String status,
             @RequestParam(name = "priority") String priority
     ) {
-        return ResponseEntity.ok(taskService.getTasksByPerformerId(id));
+        return ResponseEntity.ok(taskService.getTasksByPerformerId(id, status, priority));
     }
 
     @PostMapping("")
@@ -57,7 +58,7 @@ public class TaskController {
     }
 
     @DeleteMapping("{id}")
-    public HttpStatus delete(@PathVariable Long id) {
+    public HttpStatus delete(@PathVariable Task id) {
         taskService.delete(id);
         return HttpStatus.OK;
     }

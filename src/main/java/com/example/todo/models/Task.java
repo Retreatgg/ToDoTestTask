@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
@@ -59,5 +60,10 @@ public class Task {
     @NotNull
     @Column(name = "updated_date", nullable = false)
     private Instant updatedDate;
+
+    @NotNull
+    @ColumnDefault("false")
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = false;
 
 }

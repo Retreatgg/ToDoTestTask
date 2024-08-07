@@ -34,7 +34,8 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority) {
         Specification<Task> spec = TaskSpecification.hasAuthor(authorId)
                 .and(TaskSpecification.hasStatus(status))
-                .and(TaskSpecification.hasPriority(priority));
+                .and(TaskSpecification.hasPriority(priority))
+                .and(TaskSpecification.hasActive(true));
         List<Task> tasks = taskRepository.findAll(spec);
         return tasks.stream()
                 .map(task -> taskDto(task, commentService))
@@ -80,8 +81,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDto> getTasksByPerformerId(Long id) {
-        Specification<Task> spec = TaskSpecification.hasPerformer(id);
+    public List<TaskDto> getTasksByPerformerId(Long id, String status, String priority) {
+        Specification<Task> spec = TaskSpecification.hasPerformer(id)
+                .and(TaskSpecification.hasStatus(status))
+                .and(TaskSpecification.hasPriority(priority))
+                .and(TaskSpecification.hasActive(true));
         List<Task> tasks = taskRepository.findAll(spec);
         return tasks.stream()
                 .map(task -> taskDto(task, commentService))
@@ -89,8 +93,14 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void delete(Long id) {
-        taskRepository.deleteById(id);
+    public void delete(Task task) {
+        User user = authUtils.getUserByAuth();
+        if(task.getAuthor().getId() != user.getId()) {
+            throw new IllegalArgumentException("You can't delete this task");
+        }
+        task.setIsActive(false);
+        taskRepository.save(task);
+        log.info("Task {} was deleted", task.getId());
     }
 
     private Task createModel(TaskCreateDto dto, User author) {

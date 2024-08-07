@@ -21,9 +21,9 @@ public interface TaskService {
 
     void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
 
-    List<TaskDto> getTasksByPerformerId(Long id);
+    List<TaskDto> getTasksByPerformerId(Long id, String status, String priority);
 
-    void delete(Long id);
+    void delete(Task task);
 }
 
 
