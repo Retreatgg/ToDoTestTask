@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(
                     new AppError(HttpStatus.UNAUTHORIZED.value(),
-                            "Неправильный логин или пароль"), HttpStatus.UNAUTHORIZED);
+                            "Incorrect login or password"), HttpStatus.UNAUTHORIZED);
         }
         UserDetails userDetails = authUserDetailsService.loadUserByUsername(authRequest.getEmail());
         String token = jwtTokenUtils.generateToken(userDetails);

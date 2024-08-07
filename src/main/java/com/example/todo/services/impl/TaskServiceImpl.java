@@ -63,23 +63,34 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task findById(Long id) {
         return taskRepository.findById(id)
-                .orElseThrow(() -> new TaskNotFoundException("Task with ID: "+id+" not found"));
+                .orElseThrow(() -> new TaskNotFoundException("Task with ID: " + id + " was not found. Please verify the ID and try again."));
     }
 
     @Override
     public void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto) {
         Task task = findById(id);
-        task.setPerformer(userService.findById(taskChangePerformerDto.getPerformerId()));
-        taskRepository.save(task);
-        log.info("Task {} was change performer {}", id, taskChangePerformerDto.getPerformerId());
+        Long authorId = authUtils.getUserByAuth().getId();
+        if (authorId == task.getAuthor().getId()) {
+            task.setPerformer(userService.findById(taskChangePerformerDto.getPerformerId()));
+            taskRepository.save(task);
+            log.info("Task {} was change performer {}", id, taskChangePerformerDto.getPerformerId());
+        } else {
+            throw new IllegalArgumentException("You do not have permission to change the performer for this task. Only the author can change the performer.");
+        }
     }
 
     @Override
     public void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto) {
         Task task = findById(id);
-        task.setStatus(taskChangeStatusDto.getStatus());
-        taskRepository.save(task);
-        log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
+        Long authUserId = authUtils.getUserByAuth().getId();
+        if (task.getPerformer().getId() == authUserId || authUserId == task.getAuthor().getId()) {
+            task.setStatus(taskChangeStatusDto.getStatus());
+            taskRepository.save(task);
+            log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
+        } else {
+            throw new IllegalArgumentException("You do not have permission to change the status of this task. Only the performer or author can change the status.");
+        }
+
     }
 
     @Override
@@ -97,8 +108,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void delete(Task task) {
         User user = authUtils.getUserByAuth();
-        if(task.getAuthor().getId() != user.getId()) {
-            throw new IllegalArgumentException("You can't delete this task");
+        if (!task.getAuthor().equals(user)) {
+            throw new IllegalArgumentException("You do not have permission to delete this task. Only the author can delete it.");
         }
         task.setIsActive(false);
         taskRepository.save(task);

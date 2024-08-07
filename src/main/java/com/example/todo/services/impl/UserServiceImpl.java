@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void create(UserRegisterDto userDto) {
         if(isRegister(userDto.getEmail())) {
-            throw new AuthenticationException("User is registered");
+            throw new AuthenticationException("User already registered");
         }
         User user = createModel(userDto);
         userRepository.save(user);
