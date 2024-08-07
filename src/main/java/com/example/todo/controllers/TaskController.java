@@ -1,11 +1,16 @@
 package com.example.todo.controllers;
 
-import com.example.todo.dtos.*;
+import com.example.todo.dtos.TaskChangePerformerDto;
+import com.example.todo.dtos.TaskCreateDto;
+import com.example.todo.dtos.TaskDto;
+import com.example.todo.dtos.TaskEditDto;
 import com.example.todo.models.Task;
 import com.example.todo.services.TaskService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,18 +29,24 @@ public class TaskController {
     public ResponseEntity<List<TaskDto>> getTasksByAuthorId(
             @PathVariable Long id,
             @RequestParam(name = "status", defaultValue = "default") String status,
-            @RequestParam(name = "priority", defaultValue = "default") String priority
+            @RequestParam(name = "priority", defaultValue = "default") String priority,
+            @RequestParam(name = "page", defaultValue = "0") Integer page,
+            @RequestParam(name = "size", defaultValue = "5") Integer size
     ) {
-        return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, priority));
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, priority, pageable));
     }
 
     @GetMapping("/performer/{id}")
     public ResponseEntity<List<TaskDto>> getTasksByPerformerId(
             @PathVariable Long id,
-            @RequestParam(name = "status") String status,
-            @RequestParam(name = "priority") String priority
+            @RequestParam(name = "status", defaultValue = "default") String status,
+            @RequestParam(name = "priority", defaultValue = "default") String priority,
+            @RequestParam(name = "page", defaultValue = "0") Integer page,
+            @RequestParam(name = "size", defaultValue = "5") Integer size
     ) {
-        return ResponseEntity.ok(taskService.getTasksByPerformerId(id, status, priority));
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(taskService.getTasksByPerformerId(id, status, priority, pageable));
     }
 
     @PostMapping("")

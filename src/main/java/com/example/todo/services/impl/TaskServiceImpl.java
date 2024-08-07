@@ -14,6 +14,8 @@ import com.example.todo.specifications.TaskSpecification;
 import com.example.todo.utils.AuthUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -31,13 +33,13 @@ public class TaskServiceImpl implements TaskService {
     private final AuthUtils authUtils;
 
     @Override
-    public List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority) {
+    public List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority, Pageable pageable) {
         Specification<Task> spec = TaskSpecification.hasAuthor(authorId)
                 .and(TaskSpecification.hasStatus(status))
                 .and(TaskSpecification.hasPriority(priority))
                 .and(TaskSpecification.hasActive(true));
-        List<Task> tasks = taskRepository.findAll(spec);
-        return tasks.stream()
+        Page<Task> tasks = taskRepository.findAll(spec, pageable);
+        return tasks.getContent().stream()
                 .map(task -> taskDto(task, commentService))
                 .toList();
     }
@@ -81,13 +83,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDto> getTasksByPerformerId(Long id, String status, String priority) {
+    public List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable) {
         Specification<Task> spec = TaskSpecification.hasPerformer(id)
                 .and(TaskSpecification.hasStatus(status))
                 .and(TaskSpecification.hasPriority(priority))
                 .and(TaskSpecification.hasActive(true));
-        List<Task> tasks = taskRepository.findAll(spec);
-        return tasks.stream()
+        Page<Task> tasks = taskRepository.findAll(spec, pageable);
+        return tasks.getContent().stream()
                 .map(task -> taskDto(task, commentService))
                 .toList();
     }

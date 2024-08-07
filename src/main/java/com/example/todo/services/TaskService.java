@@ -3,14 +3,16 @@ package com.example.todo.services;
 import com.example.todo.dtos.*;
 import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.models.Task;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
 @Service
 public interface TaskService {
 
-    List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority);
+    List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority, Pageable pageable);
 
     void create(TaskCreateDto createDto);
 
@@ -21,7 +23,7 @@ public interface TaskService {
 
     void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
 
-    List<TaskDto> getTasksByPerformerId(Long id, String status, String priority);
+    List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable);
 
     void delete(Task task);
 }
