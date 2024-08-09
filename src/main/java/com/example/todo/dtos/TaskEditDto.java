@@ -1,7 +1,5 @@
 package com.example.todo.dtos;
 
-import com.example.todo.enums.Priority;
-import com.example.todo.enums.Status;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;

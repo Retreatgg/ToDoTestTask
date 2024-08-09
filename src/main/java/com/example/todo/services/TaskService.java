@@ -1,11 +1,9 @@
 package com.example.todo.services;
 
 import com.example.todo.dtos.*;
-import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.models.Task;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 

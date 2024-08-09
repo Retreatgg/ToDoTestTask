@@ -1,7 +1,5 @@
 package com.example.todo.dtos;
 
-import com.example.todo.enums.Priority;
-import com.example.todo.enums.Status;
 import lombok.Builder;
 import lombok.Data;
 

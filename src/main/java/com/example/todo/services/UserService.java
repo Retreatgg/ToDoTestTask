@@ -1,7 +1,7 @@
 package com.example.todo.services;
 
-import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.dtos.UserDto;
+import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.models.User;
 import org.springframework.stereotype.Service;
 

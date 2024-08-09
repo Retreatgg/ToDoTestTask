@@ -1,8 +1,6 @@
 package com.example.todo.services.impl;
 
 import com.example.todo.dtos.*;
-import com.example.todo.enums.Priority;
-import com.example.todo.enums.Status;
 import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.models.Task;
 import com.example.todo.models.User;

@@ -1,7 +1,5 @@
 package com.example.todo.models;
 
-import com.example.todo.enums.Priority;
-import com.example.todo.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

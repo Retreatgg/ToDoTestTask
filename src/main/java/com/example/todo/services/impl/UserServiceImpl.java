@@ -1,7 +1,7 @@
 package com.example.todo.services.impl;
 
-import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.dtos.UserDto;
+import com.example.todo.dtos.UserRegisterDto;
 import com.example.todo.exceptions.AuthenticationException;
 import com.example.todo.exceptions.UserNotFoundException;
 import com.example.todo.models.User;
