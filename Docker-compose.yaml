@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  client-backend:
+    image: todo-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089"
+    depends_on:
+      - service-db
+    restart: on-failure
+
+  service-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: todo
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+volumes:
+  db-data:
