@@ -7242,3 +7242,410 @@ Caused by: java.net.UnknownHostException: service-db
 2024-08-17T17:34:48.677+03:00 DEBUG 7280 --- [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@31cc6890] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@7d43c89f]
 2024-08-17T17:34:48.686+03:00  INFO 7280 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-08-17T17:34:48.701+03:00  INFO 7280 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-17T18:56:14.044+03:00  INFO 13204 --- [main] com.example.todo.ToDoApplication         : Starting ToDoApplication using Java 21.0.3 with PID 13204 (C:\Users\Argen\Desktop\ToDoTestTask\target\classes started by Argen in C:\Users\Argen\Desktop\ToDoTestTask)
+2024-08-17T18:56:14.054+03:00  INFO 13204 --- [main] com.example.todo.ToDoApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-08-17T18:56:26.790+03:00  INFO 13204 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-17T18:56:27.199+03:00  INFO 13204 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 368 ms. Found 5 JPA repository interfaces.
+2024-08-17T18:56:29.730+03:00  INFO 13204 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2024-08-17T18:56:29.773+03:00  INFO 13204 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-17T18:56:29.774+03:00  INFO 13204 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-17T18:56:29.916+03:00  INFO 13204 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-17T18:56:29.917+03:00  INFO 13204 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 14934 ms
+2024-08-17T18:56:30.054+03:00 DEBUG 13204 --- [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtRequestFilter urls=[/*] order=2147483647
+2024-08-17T18:56:30.057+03:00 DEBUG 13204 --- [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-08-17T18:56:30.527+03:00  INFO 13204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-17T18:56:31.155+03:00  INFO 13204 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@71c0b742
+2024-08-17T18:56:31.159+03:00  INFO 13204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-17T18:56:31.896+03:00  INFO 13204 --- [main] liquibase.database                       : Set default schema name to public
+2024-08-17T18:56:33.118+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/001_create_main_tables.yaml
+2024-08-17T18:56:33.181+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/002_add_task_id_for_comments.yaml
+2024-08-17T18:56:33.200+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/003_add_authorities_table.yaml
+2024-08-17T18:56:33.240+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/004_insert_some_date.sql
+2024-08-17T18:56:33.263+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/005_add_is_active_column_for_tasks.yaml
+2024-08-17T18:56:33.280+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/006_add_new_columns_for_tasks.yaml
+2024-08-17T18:56:33.288+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/007_insert_data.sql
+2024-08-17T18:56:33.643+03:00  INFO 13204 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-08-17T18:56:33.809+03:00  INFO 13204 --- [main] liquibase.changelog                      : Change failed validation!
+2024-08-17T18:56:33.818+03:00  INFO 13204 --- [main] liquibase.command                        : Logging exception.
+2024-08-17T18:56:33.819+03:00  INFO 13204 --- [main] liquibase.ui                             : ERROR: Exception Details
+2024-08-17T18:56:33.821+03:00  INFO 13204 --- [main] liquibase.ui                             : ERROR: Exception Primary Class:  ValidationFailedException
+2024-08-17T18:56:33.822+03:00  INFO 13204 --- [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+2024-08-17T18:56:33.823+03:00  INFO 13204 --- [main] liquibase.ui                             : ERROR: Exception Primary Source:  4.27.0
+2024-08-17T18:56:33.825+03:00  INFO 13204 --- [main] liquibase.command                        : Command execution complete
+2024-08-17T18:56:33.835+03:00  WARN 13204 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+2024-08-17T18:56:33.837+03:00  INFO 13204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-17T18:56:33.870+03:00  INFO 13204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-17T18:56:33.895+03:00  INFO 13204 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-17T18:56:34.046+03:00  INFO 13204 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-17T18:56:34.217+03:00 ERROR 13204 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.2.jar:3.3.2]
+	at com.example.todo.ToDoApplication.main(ToDoApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/initial/007_insert_data.sql::raw::includeAll was: 9:6c5643fa4910fc926b65b5e6a39aab37 but is now: 9:7496f9b7b9820c40a989dacd8440766f
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+
+2024-08-17T18:58:16.519+03:00  INFO 2236 --- [main] com.example.todo.ToDoApplication         : Starting ToDoApplication using Java 21.0.3 with PID 2236 (C:\Users\Argen\Desktop\ToDoTestTask\target\classes started by Argen in C:\Users\Argen\Desktop\ToDoTestTask)
+2024-08-17T18:58:16.528+03:00  INFO 2236 --- [main] com.example.todo.ToDoApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-08-17T18:58:20.672+03:00  INFO 2236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-17T18:58:21.027+03:00  INFO 2236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 326 ms. Found 5 JPA repository interfaces.
+2024-08-17T18:58:22.930+03:00  INFO 2236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2024-08-17T18:58:22.958+03:00  INFO 2236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-17T18:58:22.959+03:00  INFO 2236 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-17T18:58:23.117+03:00  INFO 2236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-17T18:58:23.118+03:00  INFO 2236 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6417 ms
+2024-08-17T18:58:23.324+03:00 DEBUG 2236 --- [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtRequestFilter urls=[/*] order=2147483647
+2024-08-17T18:58:23.326+03:00 DEBUG 2236 --- [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-08-17T18:58:23.791+03:00  INFO 2236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-17T18:58:24.505+03:00  INFO 2236 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1c1fa494
+2024-08-17T18:58:24.511+03:00  INFO 2236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-17T18:58:25.181+03:00  INFO 2236 --- [main] liquibase.database                       : Set default schema name to public
+2024-08-17T18:58:26.152+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/001_create_main_tables.yaml
+2024-08-17T18:58:26.209+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/002_add_task_id_for_comments.yaml
+2024-08-17T18:58:26.215+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/003_add_authorities_table.yaml
+2024-08-17T18:58:26.229+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/004_insert_some_date.sql
+2024-08-17T18:58:26.239+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/005_add_is_active_column_for_tasks.yaml
+2024-08-17T18:58:26.245+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/006_add_new_columns_for_tasks.yaml
+2024-08-17T18:58:26.252+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading resource: db/changelog/initial/007_insert_data.sql
+2024-08-17T18:58:26.349+03:00  INFO 2236 --- [main] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2024-08-17T18:58:26.525+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-08-17T18:58:26.959+03:00  INFO 2236 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-08-17T18:58:26.965+03:00  INFO 2236 --- [main] liquibase.command                        : Using deploymentId: 3910306964
+2024-08-17T18:58:26.973+03:00  INFO 2236 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-08-17T18:58:27.057+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/001_create_main_tables.yaml::create table users::Argen
+2024-08-17T18:58:27.110+03:00  INFO 2236 --- [main] liquibase.changelog                      : Table users created
+2024-08-17T18:58:27.119+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/001_create_main_tables.yaml::create table users::Argen ran successfully in 58ms
+2024-08-17T18:58:27.146+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/001_create_main_tables.yaml::create table tasks::Argen
+2024-08-17T18:58:27.191+03:00  INFO 2236 --- [main] liquibase.changelog                      : Table tasks created
+2024-08-17T18:58:27.206+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/001_create_main_tables.yaml::create table tasks::Argen ran successfully in 59ms
+2024-08-17T18:58:27.231+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/001_create_main_tables.yaml::create table comments::Argen
+2024-08-17T18:58:27.269+03:00  INFO 2236 --- [main] liquibase.changelog                      : Table comments created
+2024-08-17T18:58:27.281+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/001_create_main_tables.yaml::create table comments::Argen ran successfully in 48ms
+2024-08-17T18:58:27.322+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/002_add_task_id_for_comments.yaml::add new column for comments::Argen
+2024-08-17T18:58:27.357+03:00  INFO 2236 --- [main] liquibase.changelog                      : Columns task_id(bigint) added to comments
+2024-08-17T18:58:27.368+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/002_add_task_id_for_comments.yaml::add new column for comments::Argen ran successfully in 43ms
+2024-08-17T18:58:27.388+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/003_add_authorities_table.yaml::create table authorities::Argen
+2024-08-17T18:58:27.419+03:00  INFO 2236 --- [main] liquibase.changelog                      : Table authorities created
+2024-08-17T18:58:27.434+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/003_add_authorities_table.yaml::create table authorities::Argen ran successfully in 45ms
+2024-08-17T18:58:27.461+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/003_add_authorities_table.yaml::Create table USER_AUTHORITY::Argen
+2024-08-17T18:58:27.484+03:00  INFO 2236 --- [main] liquibase.changelog                      : Table user_authority created
+2024-08-17T18:58:27.496+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/003_add_authorities_table.yaml::Create table USER_AUTHORITY::Argen ran successfully in 32ms
+2024-08-17T18:58:27.520+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/004_insert_some_date.sql::raw::includeAll
+2024-08-17T18:58:27.596+03:00  INFO 2236 --- [main] liquibase.changelog                      : Custom SQL executed
+2024-08-17T18:58:27.611+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/004_insert_some_date.sql::raw::includeAll ran successfully in 90ms
+2024-08-17T18:58:27.643+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/005_add_is_active_column_for_tasks.yaml::add new column for tasks::Argen
+2024-08-17T18:58:27.667+03:00  INFO 2236 --- [main] liquibase.changelog                      : Columns is_active(boolean) added to tasks
+2024-08-17T18:58:27.683+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/005_add_is_active_column_for_tasks.yaml::add new column for tasks::Argen ran successfully in 38ms
+2024-08-17T18:58:27.712+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/006_add_new_columns_for_tasks.yaml::add new column for tasks::Argen
+2024-08-17T18:58:27.795+03:00  INFO 2236 --- [main] liquibase.changelog                      : Columns sticker(varchar(250)),start_time(time),end_time(time),process(integer) added to tasks
+2024-08-17T18:58:27.809+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/006_add_new_columns_for_tasks.yaml::add new column for tasks::Argen ran successfully in 94ms
+2024-08-17T18:58:27.837+03:00  INFO 2236 --- [main] liquibase.ui                             : Running Changeset: db/changelog/initial/007_insert_data.sql::raw::includeAll
+2024-08-17T18:58:27.934+03:00  INFO 2236 --- [main] liquibase.changelog                      : Custom SQL executed
+2024-08-17T18:58:27.944+03:00  INFO 2236 --- [main] liquibase.changelog                      : ChangeSet db/changelog/initial/007_insert_data.sql::raw::includeAll ran successfully in 106ms
+2024-08-17T18:58:28.001+03:00  INFO 2236 --- [main] liquibase.util                           : UPDATE SUMMARY
+2024-08-17T18:58:28.005+03:00  INFO 2236 --- [main] liquibase.util                           : Run:                         10
+2024-08-17T18:58:28.007+03:00  INFO 2236 --- [main] liquibase.util                           : Previously run:               0
+2024-08-17T18:58:28.008+03:00  INFO 2236 --- [main] liquibase.util                           : Filtered out:                 0
+2024-08-17T18:58:28.008+03:00  INFO 2236 --- [main] liquibase.util                           : -------------------------------
+2024-08-17T18:58:28.011+03:00  INFO 2236 --- [main] liquibase.util                           : Total change sets:           10
+2024-08-17T18:58:28.016+03:00  INFO 2236 --- [main] liquibase.util                           : Update summary generated
+2024-08-17T18:58:28.034+03:00  INFO 2236 --- [main] liquibase.command                        : Update command completed successfully.
+2024-08-17T18:58:28.035+03:00  INFO 2236 --- [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 46
+2024-08-17T18:58:28.058+03:00  INFO 2236 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2024-08-17T18:58:28.065+03:00  INFO 2236 --- [main] liquibase.command                        : Command execution complete
+2024-08-17T18:58:28.433+03:00  INFO 2236 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-17T18:58:28.651+03:00  INFO 2236 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.0.Final
+2024-08-17T18:58:28.850+03:00  INFO 2236 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-17T18:58:29.143+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@351c6341
+2024-08-17T18:58:29.143+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BasicTypeReference@351c6341
+2024-08-17T18:58:29.143+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BasicTypeReference@351c6341
+2024-08-17T18:58:29.143+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.BasicTypeReference@32069394
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.NumericBooleanConverter -> org.hibernate.type.BasicTypeReference@32069394
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.BasicTypeReference@70421a08
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.TrueFalseConverter -> org.hibernate.type.BasicTypeReference@70421a08
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.BasicTypeReference@5dba3fdc
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.YesNoConverter -> org.hibernate.type.BasicTypeReference@5dba3fdc
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@bea5941
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.BasicTypeReference@bea5941
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.BasicTypeReference@bea5941
+2024-08-17T18:58:29.144+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BasicTypeReference@df6f19b
+2024-08-17T18:58:29.145+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BasicTypeReference@df6f19b
+2024-08-17T18:58:29.145+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BasicTypeReference@df6f19b
+2024-08-17T18:58:29.145+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary_wrapper -> org.hibernate.type.BasicTypeReference@6d842877
+2024-08-17T18:58:29.145+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.BasicTypeReference@6d842877
+2024-08-17T18:58:29.146+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.BasicTypeReference@614cbec4
+2024-08-17T18:58:29.146+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BasicTypeReference@3835d3fd
+2024-08-17T18:58:29.146+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BasicTypeReference@3835d3fd
+2024-08-17T18:58:29.146+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.BasicTypeReference@2759749
+2024-08-17T18:58:29.146+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob_wrapper -> org.hibernate.type.BasicTypeReference@4efed0e0
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@4ac0ed65
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.BasicTypeReference@4ac0ed65
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.BasicTypeReference@4ac0ed65
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.BasicTypeReference@5c7c75fb
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.BasicTypeReference@5c7c75fb
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.BasicTypeReference@5c7c75fb
+2024-08-17T18:58:29.147+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@729d6ee2
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.BasicTypeReference@729d6ee2
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.BasicTypeReference@729d6ee2
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@4adcc981
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.BasicTypeReference@4adcc981
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.BasicTypeReference@4adcc981
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@73aae7a
+2024-08-17T18:58:29.148+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.BasicTypeReference@73aae7a
+2024-08-17T18:58:29.149+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.BasicTypeReference@73aae7a
+2024-08-17T18:58:29.149+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BasicTypeReference@3856d0cb
+2024-08-17T18:58:29.149+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BasicTypeReference@3856d0cb
+2024-08-17T18:58:29.149+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BasicTypeReference@2125535d
+2024-08-17T18:58:29.149+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BasicTypeReference@2125535d
+2024-08-17T18:58:29.150+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.BasicTypeReference@d190639
+2024-08-17T18:58:29.151+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.BasicTypeReference@d190639
+2024-08-17T18:58:29.152+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.BasicTypeReference@d190639
+2024-08-17T18:58:29.152+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character_nchar -> org.hibernate.type.BasicTypeReference@5f82209e
+2024-08-17T18:58:29.152+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.BasicTypeReference@515c732d
+2024-08-17T18:58:29.153+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.BasicTypeReference@515c732d
+2024-08-17T18:58:29.153+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.BasicTypeReference@5ae87de0
+2024-08-17T18:58:29.153+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.BasicTypeReference@1f85904a
+2024-08-17T18:58:29.154+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.BasicTypeReference@1f85904a
+2024-08-17T18:58:29.154+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.BasicTypeReference@1f85904a
+2024-08-17T18:58:29.154+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.BasicTypeReference@514dc5f4
+2024-08-17T18:58:29.156+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.BasicTypeReference@633a11eb
+2024-08-17T18:58:29.156+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.BasicTypeReference@7a247711
+2024-08-17T18:58:29.157+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.BasicTypeReference@4910afdf
+2024-08-17T18:58:29.158+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.BasicTypeReference@4910afdf
+2024-08-17T18:58:29.160+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.BasicTypeReference@764db16c
+2024-08-17T18:58:29.172+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.BasicTypeReference@764db16c
+2024-08-17T18:58:29.174+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.BasicTypeReference@45cb5307
+2024-08-17T18:58:29.174+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_char_array -> org.hibernate.type.BasicTypeReference@1c8e2850
+2024-08-17T18:58:29.175+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob_character_array -> org.hibernate.type.BasicTypeReference@50ac1249
+2024-08-17T18:58:29.175+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.BasicTypeReference@4bf10fe1
+2024-08-17T18:58:29.177+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_character_array -> org.hibernate.type.BasicTypeReference@543d2ef3
+2024-08-17T18:58:29.178+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob_char_array -> org.hibernate.type.BasicTypeReference@399c408c
+2024-08-17T18:58:29.179+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.BasicTypeReference@99223ac
+2024-08-17T18:58:29.179+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.BasicTypeReference@99223ac
+2024-08-17T18:58:29.180+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.BasicTypeReference@4a5fab78
+2024-08-17T18:58:29.181+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.BasicTypeReference@4a5fab78
+2024-08-17T18:58:29.181+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.BasicTypeReference@77a85e76
+2024-08-17T18:58:29.182+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.BasicTypeReference@77a85e76
+2024-08-17T18:58:29.182+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.BasicTypeReference@2cebf82f
+2024-08-17T18:58:29.182+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.BasicTypeReference@2cebf82f
+2024-08-17T18:58:29.183+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.BasicTypeReference@34fc315d
+2024-08-17T18:58:29.183+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.BasicTypeReference@34fc315d
+2024-08-17T18:58:29.183+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@34f48d1
+2024-08-17T18:58:29.184+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@36a1fd20
+2024-08-17T18:58:29.184+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.BasicTypeReference@45f8415b
+2024-08-17T18:58:29.184+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.BasicTypeReference@45f8415b
+2024-08-17T18:58:29.184+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeUtc -> org.hibernate.type.BasicTypeReference@10dbf660
+2024-08-17T18:58:29.185+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithTimezone -> org.hibernate.type.BasicTypeReference@69ab2d6a
+2024-08-17T18:58:29.185+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@505a8582
+2024-08-17T18:58:29.185+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.BasicTypeReference@57afe44b
+2024-08-17T18:58:29.186+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.BasicTypeReference@57afe44b
+2024-08-17T18:58:29.186+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithTimezone -> org.hibernate.type.BasicTypeReference@18887028
+2024-08-17T18:58:29.186+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTimeWithoutTimezone -> org.hibernate.type.BasicTypeReference@28f8ce2e
+2024-08-17T18:58:29.186+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.BasicTypeReference@2c0a3826
+2024-08-17T18:58:29.187+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.BasicTypeReference@2c0a3826
+2024-08-17T18:58:29.188+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.BasicTypeReference@4af0c50
+2024-08-17T18:58:29.189+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.BasicTypeReference@4af0c50
+2024-08-17T18:58:29.189+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.BasicTypeReference@5ffd35dd
+2024-08-17T18:58:29.189+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.BasicTypeReference@5ffd35dd
+2024-08-17T18:58:29.190+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.BasicTypeReference@5ffd35dd
+2024-08-17T18:58:29.190+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.BasicTypeReference@311a09b2
+2024-08-17T18:58:29.191+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.BasicTypeReference@311a09b2
+2024-08-17T18:58:29.191+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.BasicTypeReference@311a09b2
+2024-08-17T18:58:29.191+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.BasicTypeReference@4cacccbf
+2024-08-17T18:58:29.192+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.BasicTypeReference@301d84f6
+2024-08-17T18:58:29.192+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration instant -> org.hibernate.type.BasicTypeReference@6f80cf5
+2024-08-17T18:58:29.192+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.BasicTypeReference@6f80cf5
+2024-08-17T18:58:29.193+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid -> org.hibernate.type.BasicTypeReference@674ed201
+2024-08-17T18:58:29.193+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.BasicTypeReference@674ed201
+2024-08-17T18:58:29.193+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration pg-uuid -> org.hibernate.type.BasicTypeReference@674ed201
+2024-08-17T18:58:29.193+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.BasicTypeReference@4dad2363
+2024-08-17T18:58:29.194+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.BasicTypeReference@114b2414
+2024-08-17T18:58:29.194+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.BasicTypeReference@57920d6c
+2024-08-17T18:58:29.194+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.BasicTypeReference@57920d6c
+2024-08-17T18:58:29.195+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.BasicTypeReference@465d1345
+2024-08-17T18:58:29.195+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Currency -> org.hibernate.type.BasicTypeReference@465d1345
+2024-08-17T18:58:29.195+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.BasicTypeReference@465d1345
+2024-08-17T18:58:29.195+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.BasicTypeReference@62cf86d6
+2024-08-17T18:58:29.195+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.BasicTypeReference@62cf86d6
+2024-08-17T18:58:29.196+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.BasicTypeReference@2a6c751f
+2024-08-17T18:58:29.196+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.io.Serializable -> org.hibernate.type.BasicTypeReference@2a6c751f
+2024-08-17T18:58:29.196+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.BasicTypeReference@6dd2e453
+2024-08-17T18:58:29.196+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.BasicTypeReference@6dd2e453
+2024-08-17T18:58:29.197+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZoneOffset -> org.hibernate.type.BasicTypeReference@433b1597
+2024-08-17T18:58:29.197+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZoneOffset -> org.hibernate.type.BasicTypeReference@433b1597
+2024-08-17T18:58:29.197+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.BasicTypeReference@5d5cd210
+2024-08-17T18:58:29.197+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.BasicTypeReference@5d5cd210
+2024-08-17T18:58:29.198+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration vector -> org.hibernate.type.BasicTypeReference@14d18029
+2024-08-17T18:58:29.200+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.BasicTypeReference@6edb1e9c
+2024-08-17T18:58:29.219+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.JavaObjectType@1ce2029b
+2024-08-17T18:58:29.220+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@1ce2029b
+2024-08-17T18:58:29.224+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration null -> org.hibernate.type.NullType@3d02ff64
+2024-08-17T18:58:29.226+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.BasicTypeReference@6f17dd06
+2024-08-17T18:58:29.227+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.BasicTypeReference@6ec98ccc
+2024-08-17T18:58:29.228+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.BasicTypeReference@441aa7ae
+2024-08-17T18:58:29.228+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.BasicTypeReference@1534bdc6
+2024-08-17T18:58:29.228+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.BasicTypeReference@53079ae6
+2024-08-17T18:58:29.228+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_time -> org.hibernate.type.BasicTypeReference@718ad3a6
+2024-08-17T18:58:29.228+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.BasicTypeReference@603c2dee
+2024-08-17T18:58:29.229+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.BasicTypeReference@50d666a2
+2024-08-17T18:58:30.431+03:00  INFO 2236 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-17T18:58:31.378+03:00 DEBUG 2236 --- [main] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@568c9ee1) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@3b839f68)
+2024-08-17T18:58:31.379+03:00 DEBUG 2236 --- [main] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@e5c52fa) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@614361fa)
+2024-08-17T18:58:31.391+03:00 DEBUG 2236 --- [main] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2004, BlobTypeDescriptor(BLOB_BINDING)) replaced previous registration(BlobTypeDescriptor(DEFAULT))
+2024-08-17T18:58:31.392+03:00 DEBUG 2236 --- [main] o.h.t.d.jdbc.spi.JdbcTypeRegistry        : addDescriptor(2005, ClobTypeDescriptor(CLOB_BINDING)) replaced previous registration(ClobTypeDescriptor(DEFAULT))
+2024-08-17T18:58:31.466+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration JAVA_OBJECT -> org.hibernate.type.JavaObjectType@34d11c92
+2024-08-17T18:58:31.468+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.JavaObjectType@34d11c92
+2024-08-17T18:58:31.470+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Type registration key [java.lang.Object] overrode previous entry : `org.hibernate.type.JavaObjectType@1ce2029b`
+2024-08-17T18:58:31.557+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.DurationType -> basicType@1(java.time.Duration,3015)
+2024-08-17T18:58:31.562+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> basicType@1(java.time.Duration,3015)
+2024-08-17T18:58:31.563+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> basicType@1(java.time.Duration,3015)
+2024-08-17T18:58:31.599+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetDateTimeType -> basicType@2(java.time.OffsetDateTime,3003)
+2024-08-17T18:58:31.601+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> basicType@2(java.time.OffsetDateTime,3003)
+2024-08-17T18:58:31.603+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> basicType@2(java.time.OffsetDateTime,3003)
+2024-08-17T18:58:31.607+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.ZonedDateTimeType -> basicType@3(java.time.ZonedDateTime,3003)
+2024-08-17T18:58:31.607+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> basicType@3(java.time.ZonedDateTime,3003)
+2024-08-17T18:58:31.612+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> basicType@3(java.time.ZonedDateTime,3003)
+2024-08-17T18:58:31.623+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration org.hibernate.type.OffsetTimeType -> basicType@4(java.time.OffsetTime,3007)
+2024-08-17T18:58:31.625+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> basicType@4(java.time.OffsetTime,3007)
+2024-08-17T18:58:31.625+03:00 DEBUG 2236 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> basicType@4(java.time.OffsetTime,3007)
+2024-08-17T18:58:31.644+03:00 DEBUG 2236 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6b92a0d1] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@4b9ed99d]
+2024-08-17T18:58:34.871+03:00  WARN 2236 --- [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.example.todo.models.UserAuthority
+2024-08-17T18:58:34.871+03:00  WARN 2236 --- [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.example.todo.models.UserAuthority
+2024-08-17T18:58:37.091+03:00  INFO 2236 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-17T18:58:37.095+03:00 DEBUG 2236 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@6b92a0d1] to SessionFactoryImplementor [org.hibernate.internal.SessionFactoryImpl@4af0ae2c]
+2024-08-17T18:58:37.222+03:00 TRACE 2236 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@4af0ae2c] for TypeConfiguration
+2024-08-17T18:58:37.223+03:00  INFO 2236 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-17T18:58:37.605+03:00 DEBUG 2236 --- [main] o.h.stat.internal.StatisticsInitiator    : Statistics initialized [enabled=false]
+2024-08-17T18:58:38.213+03:00  INFO 2236 --- [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2024-08-17T18:58:38.215+03:00  WARN 2236 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-08-17T18:58:38.874+03:00  WARN 2236 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-17T18:58:39.164+03:00 DEBUG 2236 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-08-17T18:58:39.620+03:00 DEBUG 2236 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 19 mappings in 'requestMappingHandlerMapping'
+2024-08-17T18:58:39.847+03:00 DEBUG 2236 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-17T18:58:39.992+03:00 DEBUG 2236 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-17T18:58:40.172+03:00 DEBUG 2236 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-17T18:58:40.991+03:00  INFO 2236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2024-08-17T18:58:41.010+03:00  INFO 2236 --- [main] com.example.todo.ToDoApplication         : Started ToDoApplication in 26.631 seconds (process running for 30.186)
+2024-08-17T19:00:04.584+03:00  INFO 2236 --- [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-17T19:00:04.585+03:00  INFO 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-17T19:00:04.585+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-17T19:00:04.586+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-17T19:00:04.586+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-17T19:00:04.591+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7821d009
+2024-08-17T19:00:04.593+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7dc16d33
+2024-08-17T19:00:04.593+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-17T19:00:04.594+03:00  INFO 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-08-17T19:00:04.650+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/tasks/author/1
+2024-08-17T19:00:04.668+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-08-17T19:00:04.672+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/tasks/author/1
+2024-08-17T19:00:04.678+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/tasks/author/1", parameters={}
+2024-08-17T19:00:04.683+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.todo.controllers.TaskController#getTasksByAuthorId(Long, String, String, Integer, Integer)
+2024-08-17T19:00:05.775+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.author_id,
+        t1_0.created_date,
+        t1_0.description,
+        t1_0.end_time,
+        t1_0.is_active,
+        t1_0.name_task,
+        t1_0.performer_id,
+        t1_0.priority,
+        t1_0.process,
+        t1_0.start_time,
+        t1_0.status,
+        t1_0.sticker,
+        t1_0.updated_date 
+    from
+        tasks t1_0 
+    where
+        t1_0.author_id=? 
+        and 1=1 
+        and 1=1 
+        and t1_0.is_active=? 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2024-08-17T19:00:05.911+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] org.hibernate.SQL                        : 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.author_id=? 
+        and 1=1 
+        and 1=1 
+        and t1_0.is_active=?
+2024-08-17T19:00:06.050+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-17T19:00:06.133+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[TaskDto(id=1, nameTask=Задача по дизайну, description=Создать макет для нового проекта, status=NEW, (truncated)...]
+2024-08-17T19:00:06.511+03:00 DEBUG 2236 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
