@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5050/todo?stringtype=unspecified
+    url: jdbc:postgresql://service-db:5432/todo?stringtype=unspecified
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
