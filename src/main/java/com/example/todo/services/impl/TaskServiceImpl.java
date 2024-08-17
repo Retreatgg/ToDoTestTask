@@ -1,6 +1,7 @@
 package com.example.todo.services.impl;
 
 import com.example.todo.dtos.*;
+import com.example.todo.enums.Priority;
 import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.models.Task;
 import com.example.todo.models.User;
@@ -18,6 +19,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -44,7 +47,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void create(TaskCreateDto createDto) {
-        User author = authUtils.getUserByAuth();
+//        User author = authUtils.getUserByAuth();
+        User author = userService.findById(1L);
         Task task = createModel(createDto, author);
         taskRepository.save(task);
         log.info("User {} create new task", author.getId());
@@ -105,25 +109,32 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void delete(Task task) {
-        User user = authUtils.getUserByAuth();
-        if (!task.getAuthor().equals(user)) {
-            throw new IllegalArgumentException("You do not have permission to delete this task. Only the author can delete it.");
-        }
+//        User user = authUtils.getUserByAuth();
+//        if (!task.getAuthor().equals(user)) {
+//            throw new IllegalArgumentException("You do not have permission to delete this task. Only the author can delete it.");
+//        }
         task.setIsActive(false);
         taskRepository.save(task);
         log.info("Task {} was deleted", task.getId());
     }
 
     private Task createModel(TaskCreateDto dto, User author) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return Task.builder()
                 .author(author)
                 .nameTask(dto.getNameTask())
                 .status(dto.getStatus())
                 .description(dto.getDescription())
-                .priority(dto.getPriority())
-                .createdDate(Instant.now())
+                .endTime(LocalTime.parse(dto.getEndTime(), formatter))
+                .startTime(LocalTime.parse(dto.getStartTime(), formatter))
+                .process(dto.getProcess())
+                .sticker(dto.getSticker())
+                .createdDate(dto.getDate())
+                .priority(Priority.LOW.getPriority())
+//                .createdDate(Instant.now())
                 .updatedDate(Instant.now())
-                .performer(userService.findById(dto.getPerformerId()))
+                .performer(userService.findById(1L))
+                .isActive(true)
                 .build();
     }
 
@@ -140,16 +151,21 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private static TaskDto taskDto(Task model, CommentService comService) {
-        List<CommentDto> comments = comService.getCommentsByTaskId(model.getId());
+//        List<CommentDto> comments = comService.getCommentsByTaskId(model.getId());
         return TaskDto.builder()
                 .id(model.getId())
                 .description(model.getDescription())
                 .nameTask(model.getNameTask())
-                .authorId(model.getAuthor().getId())
-                .performerId(model.getAuthor().getId())
+                .date(model.getCreatedDate())
+                .sticker(model.getSticker())
+                .startTime(model.getStartTime().toString())
+                .endTime(model.getEndTime().toString())
+                .process(model.getProcess())
+//                .authorId(model.getAuthor().getId())
+//                .performerId(model.getAuthor().getId())
                 .status(model.getStatus())
-                .priority(model.getPriority())
-                .commentDtoList(comments)
+//                .priority(model.getPriority())
+//                .commentDtoList(comments)
                 .build();
     }
 

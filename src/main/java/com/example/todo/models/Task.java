@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -21,47 +22,60 @@ public class Task {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotNull
+//    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-    @NotNull
+//    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "performer_id", nullable = false)
     private User performer;
 
     @Size(max = 150)
-    @NotNull
+//    @NotNull
     @Column(name = "name_task", nullable = false, length = 150)
     private String nameTask;
 
     @Size(max = 255)
-    @NotNull
+//    @NotNull
     @Column(name = "description", nullable = false)
     private String description;
 
     @Size(max = 35)
-    @NotNull
+//    @NotNull
     @Column(name = "status", nullable = false, length = 35)
     private String status;
 
     @Size(max = 35)
-    @NotNull
+//    @NotNull
     @Column(name = "priority", nullable = false, length = 35)
     private String priority;
 
-    @NotNull
+//    @NotNull
     @Column(name = "created_date", nullable = false)
     private Instant createdDate;
 
-    @NotNull
+//    @NotNull
     @Column(name = "updated_date", nullable = false)
     private Instant updatedDate;
 
-    @NotNull
+//    @NotNull
     @ColumnDefault("false")
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = false;
+
+    @Size(max = 250)
+    @Column(name = "sticker", length = 250)
+    private String sticker;
+
+    @Column(name = "start_time")
+    private LocalTime startTime;
+
+    @Column(name = "end_time")
+    private LocalTime endTime;
+
+    @Column(name = "process")
+    private Integer process;
 
 }

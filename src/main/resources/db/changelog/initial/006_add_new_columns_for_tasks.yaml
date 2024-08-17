@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: add new column for tasks
+      author: Argen
+      changes:
+        - addColumn:
+            tableName: tasks
+            columns:
+              - column:
+                  name: sticker
+                  type: varchar(250)
+              - column:
+                  name: start_time
+                  type: time
+              - column:
+                  name: end_time
+                  type: time
+              - column:
+                  name: process
+                  type: integer
