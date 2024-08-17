@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5050/todo?stringtype=unspecified
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        generate_statistics: false
+        format_sql: true
+    show-sql: false
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: debug
+      hibernate:
+        stat: debug
+        type: trace
+    sql: trace
+    web: debug
+  file:
+    name: logs/demo.log
+server:
+  port: 8089
+
+jwt:
+  secret: 984hg493gh0439rthr9uruj2309yh937gc763fe87t3f89723gf
+  lifetime: 10m

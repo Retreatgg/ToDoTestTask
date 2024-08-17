@@ -6,6 +6,6 @@ RUN mvn clean package
 
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /build/target/ToDO*jar ./ToDO.jar
+COPY --from=build /build/target/ToDO*jar ./ToDoTestTask.jar
 EXPOSE 8089
-CMD ["java", "-jar", "ToDO.jar"]
+CMD ["java", "-jar", "ToDoTestTask.jar"]

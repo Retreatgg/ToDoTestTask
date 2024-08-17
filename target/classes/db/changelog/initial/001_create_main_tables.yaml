@@ -1,0 +1,128 @@
+databaseChangeLog:
+  - changeSet:
+      id: create table users
+      author: Argen
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create table tasks
+      author: Argen
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_author_task_id
+                    references: users(id)
+                    nullable: false
+              - column:
+                  name: performer_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_performer_task_id
+                    references: users(id)
+                    nullable: false
+              - column:
+                  name: name_task
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(35)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: priority
+                  type: varchar(35)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: create table comments
+      author: Argen
+      changes:
+        - createTable:
+            tableName: comments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_author_comment_id
+                    references: users(id)
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(350)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false

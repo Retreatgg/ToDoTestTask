@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: add new column for tasks
+      author: Argen
+      changes:
+        - addColumn:
+            tableName: tasks
+            columns:
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValue: true
+                  constraints:
+                    nullable: false
