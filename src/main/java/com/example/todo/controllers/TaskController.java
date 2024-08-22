@@ -26,6 +26,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/author/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<TaskDto>> getTasksByAuthorId(
             @PathVariable Long id,
             @RequestParam(name = "status", defaultValue = "default") String status,
@@ -50,6 +51,7 @@ public class TaskController {
     }
 
     @PostMapping("")
+    @CrossOrigin(origins = "http://localhost:3000")
     public HttpStatus create(@RequestBody @Valid TaskCreateDto createDto) {
         taskService.create(createDto);
         return HttpStatus.OK;
@@ -69,6 +71,7 @@ public class TaskController {
     }
 
     @DeleteMapping("{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public HttpStatus delete(@PathVariable Task id) {
         taskService.delete(id);
         return HttpStatus.OK;
