@@ -6,7 +6,6 @@ import com.example.todo.exceptions.TaskNotFoundException;
 import com.example.todo.models.Task;
 import com.example.todo.models.User;
 import com.example.todo.repositories.TaskRepository;
-import com.example.todo.services.CommentService;
 import com.example.todo.services.TaskService;
 import com.example.todo.services.UserService;
 import com.example.todo.specifications.TaskSpecification;
@@ -30,7 +29,6 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
     private final UserService userService;
-    private final CommentService commentService;
     private final AuthUtils authUtils;
 
     @Override
@@ -41,7 +39,7 @@ public class TaskServiceImpl implements TaskService {
                 .and(TaskSpecification.hasActive(true));
         Page<Task> tasks = taskRepository.findAll(spec, pageable);
         return tasks.getContent().stream()
-                .map(task -> taskDto(task, commentService))
+                .map(task -> taskDto(task))
                 .toList();
     }
 
@@ -103,7 +101,7 @@ public class TaskServiceImpl implements TaskService {
                 .and(TaskSpecification.hasActive(true));
         Page<Task> tasks = taskRepository.findAll(spec, pageable);
         return tasks.getContent().stream()
-                .map(task -> taskDto(task, commentService))
+                .map(task -> taskDto(task))
                 .toList();
     }
 
@@ -115,7 +113,13 @@ public class TaskServiceImpl implements TaskService {
 //        }
         task.setIsActive(false);
         taskRepository.save(task);
+
         log.info("Task {} was deleted", task.getId());
+    }
+
+    @Override
+    public TaskDto getTaskDto(Task task) {
+        return taskDto(task);
     }
 
     private Task createModel(TaskCreateDto dto, User author) {
@@ -150,7 +154,7 @@ public class TaskServiceImpl implements TaskService {
                 .build();
     }
 
-    private static TaskDto taskDto(Task model, CommentService comService) {
+    private static TaskDto taskDto(Task model) {
 //        List<CommentDto> comments = comService.getCommentsByTaskId(model.getId());
         return TaskDto.builder()
                 .id(model.getId())

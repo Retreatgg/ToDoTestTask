@@ -24,6 +24,8 @@ public interface TaskService {
     List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable);
 
     void delete(Task task);
+
+    TaskDto getTaskDto(Task task);
 }
 
 

@@ -76,4 +76,9 @@ public class TaskController {
         taskService.delete(id);
         return HttpStatus.OK;
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable(name = "id") Task task) {
+        return ResponseEntity.ok(taskService.getTaskDto(task));
+    }
 }
