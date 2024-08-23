@@ -30,12 +30,12 @@ public class TaskController {
     public ResponseEntity<List<TaskDto>> getTasksByAuthorId(
             @PathVariable Long id,
             @RequestParam(name = "status", defaultValue = "default") String status,
-            @RequestParam(name = "priority", defaultValue = "default") String priority,
+//            @RequestParam(name = "priority", defaultValue = "default") String priority,
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "size", defaultValue = "5") Integer size
     ) {
         Pageable pageable = PageRequest.of(page, size);
-        return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, priority, pageable));
+        return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, pageable));
     }
 //
 //    @GetMapping("/performer/{id}")

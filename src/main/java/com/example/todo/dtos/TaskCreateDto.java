@@ -1,5 +1,6 @@
 package com.example.todo.dtos;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,15 +13,19 @@ import java.time.LocalTime;
 @Builder
 public class TaskCreateDto {
 
-//    private Long performerId;
+    @NotNull
     private String nameTask;
+    @NotNull
     private String description;
+    @NotNull
     private String status;
-//    private String priority;
+    @NotNull
     private String sticker;
+    @NotNull
     private String startTime;
+    @NotNull
     private String endTime;
-    private Integer process;
+    @NotNull
     private Instant date;
 
 }

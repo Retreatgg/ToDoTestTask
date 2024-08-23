@@ -32,10 +32,9 @@ public class TaskServiceImpl implements TaskService {
     private final AuthUtils authUtils;
 
     @Override
-    public List<TaskDto> getTasksByAuthorId(Long authorId, String status, String priority, Pageable pageable) {
+    public List<TaskDto> getTasksByAuthorId(Long authorId, String status, Pageable pageable) {
         Specification<Task> spec = TaskSpecification.hasAuthor(authorId)
                 .and(TaskSpecification.hasStatus(status))
-                .and(TaskSpecification.hasPriority(priority))
                 .and(TaskSpecification.hasActive(true));
         Page<Task> tasks = taskRepository.findAll(spec, pageable);
         return tasks.getContent().stream()
@@ -130,11 +129,10 @@ public class TaskServiceImpl implements TaskService {
                 .description(dto.getDescription())
                 .endTime(LocalTime.parse(dto.getEndTime(), formatter))
                 .startTime(LocalTime.parse(dto.getStartTime(), formatter))
-                .process(dto.getProcess())
+                .process(0)
                 .sticker(dto.getSticker())
                 .createdDate(dto.getDate())
                 .priority(Priority.LOW.getPriority())
-//                .createdDate(Instant.now())
                 .updatedDate(Instant.now())
                 .performer(userService.findById(1L))
                 .isActive(true)
