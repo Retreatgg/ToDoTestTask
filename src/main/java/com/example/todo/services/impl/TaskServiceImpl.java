@@ -67,43 +67,42 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto) {
+    public void changeProcess(Long id, TaskChangeProcess taskChangeProcess) {
         Task task = findById(id);
         Long authorId = authUtils.getUserByAuth().getId();
         if (authorId == task.getAuthor().getId()) {
-            task.setPerformer(userService.findById(taskChangePerformerDto.getPerformerId()));
+            task.setProcess(taskChangeProcess.getProcess());
             taskRepository.save(task);
-            log.info("Task {} was change performer {}", id, taskChangePerformerDto.getPerformerId());
+            log.info("Task {} was change process {}", id, taskChangeProcess.getProcess());
         } else {
-            throw new IllegalArgumentException("You do not have permission to change the performer for this task. Only the author can change the performer.");
+            throw new IllegalArgumentException("You do not have permission to change the process for this task. Only the author can change the process.");
         }
     }
+//
+//    @Override
+//    public void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto) {
+//        Task task = findById(id);
+//        Long authUserId = authUtils.getUserByAuth().getId();
+//        if (task.getPerformer().getId() == authUserId || authUserId == task.getAuthor().getId()) {
+//            task.setStatus(taskChangeStatusDto.getStatus());
+//            taskRepository.save(task);
+//            log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
+//        } else {
+//            throw new IllegalArgumentException("You do not have permission to change the status of this task. Only the performer or author can change the status.");
+//        }
+//    }
 
-    @Override
-    public void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto) {
-        Task task = findById(id);
-        Long authUserId = authUtils.getUserByAuth().getId();
-        if (task.getPerformer().getId() == authUserId || authUserId == task.getAuthor().getId()) {
-            task.setStatus(taskChangeStatusDto.getStatus());
-            taskRepository.save(task);
-            log.info("Task {} was change status {}", id, taskChangeStatusDto.getStatus());
-        } else {
-            throw new IllegalArgumentException("You do not have permission to change the status of this task. Only the performer or author can change the status.");
-        }
-
-    }
-
-    @Override
-    public List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable) {
-        Specification<Task> spec = TaskSpecification.hasPerformer(id)
-                .and(TaskSpecification.hasStatus(status))
-                .and(TaskSpecification.hasPriority(priority))
-                .and(TaskSpecification.hasActive(true));
-        Page<Task> tasks = taskRepository.findAll(spec, pageable);
-        return tasks.getContent().stream()
-                .map(task -> taskDto(task))
-                .toList();
-    }
+//    @Override
+//    public List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable) {
+//        Specification<Task> spec = TaskSpecification.hasPerformer(id)
+//                .and(TaskSpecification.hasStatus(status))
+//                .and(TaskSpecification.hasPriority(priority))
+//                .and(TaskSpecification.hasActive(true));
+//        Page<Task> tasks = taskRepository.findAll(spec, pageable);
+//        return tasks.getContent().stream()
+//                .map(task -> taskDto(task))
+//                .toList();
+//    }
 
     @Override
     public void delete(Task task) {
@@ -148,6 +147,7 @@ public class TaskServiceImpl implements TaskService {
                 .nameTask(dto.getNameTask())
                 .status(dto.getStatus())
                 .priority(dto.getPriority())
+                .process(dto.getProcess())
                 .updatedDate(Instant.now())
                 .performer(userService.findById(dto.getPerformerId()))
                 .description(dto.getDescription())

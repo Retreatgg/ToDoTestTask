@@ -1,6 +1,6 @@
 package com.example.todo.controllers;
 
-import com.example.todo.dtos.TaskChangePerformerDto;
+import com.example.todo.dtos.TaskChangeProcess;
 import com.example.todo.dtos.TaskCreateDto;
 import com.example.todo.dtos.TaskDto;
 import com.example.todo.dtos.TaskEditDto;
@@ -37,18 +37,18 @@ public class TaskController {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(taskService.getTasksByAuthorId(id, status, priority, pageable));
     }
-
-    @GetMapping("/performer/{id}")
-    public ResponseEntity<List<TaskDto>> getTasksByPerformerId(
-            @PathVariable Long id,
-            @RequestParam(name = "status", defaultValue = "default") String status,
-            @RequestParam(name = "priority", defaultValue = "default") String priority,
-            @RequestParam(name = "page", defaultValue = "0") Integer page,
-            @RequestParam(name = "size", defaultValue = "5") Integer size
-    ) {
-        Pageable pageable = PageRequest.of(page, size);
-        return ResponseEntity.ok(taskService.getTasksByPerformerId(id, status, priority, pageable));
-    }
+//
+//    @GetMapping("/performer/{id}")
+//    public ResponseEntity<List<TaskDto>> getTasksByPerformerId(
+//            @PathVariable Long id,
+//            @RequestParam(name = "status", defaultValue = "default") String status,
+//            @RequestParam(name = "priority", defaultValue = "default") String priority,
+//            @RequestParam(name = "page", defaultValue = "0") Integer page,
+//            @RequestParam(name = "size", defaultValue = "5") Integer size
+//    ) {
+//        Pageable pageable = PageRequest.of(page, size);
+//        return ResponseEntity.ok(taskService.getTasksByPerformerId(id, status, priority, pageable));
+//    }
 
     @PostMapping("")
     @CrossOrigin(origins = "http://localhost:3000")
@@ -65,8 +65,8 @@ public class TaskController {
 
     @PatchMapping("{id}")
     public HttpStatus changePerformer(@PathVariable Long id,
-                                      @RequestBody @Valid TaskChangePerformerDto taskChangePerformerDto) {
-        taskService.changePerformer(id, taskChangePerformerDto);
+                                      @RequestBody @Valid TaskChangeProcess taskChangeProcess) {
+        taskService.changeProcess(id, taskChangeProcess);
         return HttpStatus.OK;
     }
 

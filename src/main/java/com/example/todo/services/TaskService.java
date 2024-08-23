@@ -17,11 +17,11 @@ public interface TaskService {
     void edit(TaskEditDto editDto, Long taskId);
     Task findById(Long id);
 
-    void changePerformer(Long id, TaskChangePerformerDto taskChangePerformerDto);
+    void changeProcess(Long id, TaskChangeProcess taskChangeProcess);
 
-    void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
-
-    List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable);
+//    void changeStatus(Long id, TaskChangeStatusDto taskChangeStatusDto);
+//
+//    List<TaskDto> getTasksByPerformerId(Long id, String status, String priority, Pageable pageable);
 
     void delete(Task task);
 

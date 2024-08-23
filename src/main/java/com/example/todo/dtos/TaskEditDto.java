@@ -14,6 +14,8 @@ public class TaskEditDto {
     @NotNull
     private String description;
     @NotNull
+    private Integer process;
+    @NotNull
     private String status;
     @NotNull
     private String priority;
