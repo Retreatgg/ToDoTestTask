@@ -31,7 +31,6 @@ logging:
   file:
     name: logs/demo.log
 server:
-  address: 172.20.10.4
   port: 8089
 
 jwt:
